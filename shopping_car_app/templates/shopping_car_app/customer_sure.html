@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load static %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<title>顾客确定</title>
+<script src="/static/js/jquery_1.8.js"></script>
+    <script src="/static/js/jquery_cookie.js"></script>
+	<link rel="shortcut icon" href="/static/images/favicon.ico?v=20160901" type="image/x-icon">
+    <link href="/static/css/shopping_cart_new.css" rel="stylesheet" type="text/css">
+	<link href="/static/css/bootstrap.min.css" type="text/css" />
+
+    <style type="text/css">
+        li{
+
+        }
+    </style>
+</head>
+<form action="http://search.dangdang.com/search.aspx" id="bootpagetopSearch" name="bootpagetopSearch" method="GET"></form>
+<script type="text/javascript">var nick_num = 0;initHeaderOperate();</script><script type="text/javascript" src="http://orderb.dangdang.com/queryunpaid?callback=Unpaid_Data"></script>
+		<div class="shoppingcart_wrapper" id="ad_cpt_11850"><div><a href="http://a.dangdang.com/tjump.php?q=ddo84XQOf357bOs8tXGg5%2F%2F0oVoDImt3DFWsMqu7ZMSVsfUMeOQJueASNiMLjq%2FdrXMLCKnVfyKEahteAh1ih%2ByKYrKGzhvL20LVbDzObRambBA0YPpivy5hR5foQ4Rt%2BTB" target="_blank" rel="nofollow"><img src="http://img62.ddimg.cn/2017/1/11/2017011111344969879.jpg"></a></div></div>
+<div class="logo_line">
+    <div class="w960">
+        <div class="shopping_procedure"><span class="current">我的购物车</span><span>填写订单</span><span>完成订单</span></div>
+        <div class="logo"><a href="#"><img src="/static/images/bz_logo_car.jpg" alt=""></a></div>
+    </div>
+</div>
+<body style="padding-bottom:82px">
+
+<link href="/static/css/header_960_150611.css" rel="stylesheet" type="text/css">
+<script src="/static/js/pagetop2015_0827.js" charset="gb2312" type="text/javascript"></script>
+
+<div id="hd">
+<div id="tools">
+<div class="tools">
+    <div class="ddnewhead_operate" dd_name="顶链接">
+        
+        <div class="ddnewhead_welcome" display="none;">
+            <span id="nickname"><span class="hi">Hi，<a href="http://myhome.dangdang.com/" class="login_link" target="_blank"><b>159**…</b></a><a href="javascript:PageTopSignOut();" target="_self">[退出]</a></span></span>
+            <div class="tel_pop" style="display:none" id="__ddnav_sjdd" onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');" onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');">
+                <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i class="icon_tel"></i>手机当当</a><i class="title_shadow"></i>
+                <ul class="tel_pop_box">
+                    <td><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码"><span>当当手机客户端</span><img src="http://img3.ddimg.cn/00363/doc/erweima2.png"><span class="text">随手查订单<br>随时享优惠</span></a></td>
+                </ul>
+            </div>
+        </div>
+        <div class="new_head_znx" id="znx_content" style="display:none;"></div>
+    </div>
+</div>
+</div>
+<div id="header_end"></div>
+{#内容#}
+<div>
+    <div class="table-responsive" style="margin-left: 100px; margin-top: 100px; margin-right: 100px">
+        <h1 class="h2">订单确定表</h1>
+      <table class="table table-striped h3" >
+            <tr>
+                <td>封面</td>
+                <td>名字</td>
+                 <td>出版社</td>
+                <td>百知价</td>
+                <td>市场价</td>
+                <td>数量</td>
+                <td>小计</td>
+
+            </tr>
+          {% for i in shop_car_obj.book_list %}
+            <tr>
+               <td><img src="/static/{{ i.book.product_image_path }}" alt=""/></td>
+                <td>{{ i.book.book_name }}</td>
+                <td>{{ i.book.book_publish }}</td>
+                <td>￥{{ i.book.book_dprice }}</td>
+                <td>￥{{ i.book.book_price }}</td>
+                <td>{{ i.bookCount }}</td>
+                <td>{% widthratio i.bookCount 1 i.book.book_dprice %}</td>
+
+            </tr>
+          {% endfor %}
+      </table>
+    <div style="margin-top: 30px; margin-left:800px">
+        <h3 class="h3" style="color: red">节省价￥{{ shop_car_obj.save_price }}</h3>
+        <h3 class="h3" style="color: red">总价￥{{ shop_car_obj.total_price }}</h3>
+        <a href="{% url 'shopping_car_app:shopping_car_indent_view' %}"><input class="btn" type="button" value="确定"/></a>
+        <a href="{% url 'shopping_car_app:shopping_car_view' %}"><input class="btn" type="button" value="返回"/></a>
+    </div>
+    </div>
+
+
+
+</div>
+
+
+
+<div id="footer">
+<div class="footer">
+	<div class="footer_nav_box">
+		<div class="footer_copyright"><span>Copyright (C) 当当网 2004-2014, All Rights Reserved</span><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001051000098" target="_blank" class="footer_img" rel="nofollow"><img src="http://img4.dangdang.com/bottom/validate.gif"></a><span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span>出版物经营许可证&nbsp;新出发京批字第直0673号</span></div>
+	</div>
+</div>
+</div>
+    <div class="foot_tip_ad">广告</div>
+    <style>
+        .foot_tip_ad { width:40px; height:40px; font:12px/40px "simsun"; text-align:center; color:#fff; background-color:#474747; position:fixed; right:0; bottom:10px;_position:absolute; _bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+    </style>
+
+
+</body>
+</html>

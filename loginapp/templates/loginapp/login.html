@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load static %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录 - 当当网</title>
+<link href="/static/css/login.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/pop_cheat.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="head"> <a href="http://www.dangdang.com"> <img src="/static/images/signin_logo.png" /> </a>
+  <div class="improve"><img src="/static/images/bz.jpg" width="178" height="61" /> </div>
+</div>
+
+    <div class="" style="width:960px; margin:0 auto;"> <img src="http://a.dangdang.com/api/data/cpx/img/38930001/1" style="display: none;">
+<div id="J_cheatProofTop" class="new_tip" >
+  <div id="component_2747856"></div>
+  <div> 为保障账户安全，请勿设置与邮箱及其他网站相同的账户登录密码或支付密码，<a href="http://blog.dangdang.com/?p=22276">谨防诈骗</a>！ </div>
+</div>
+  <div class="set_area clearfix">
+    <div class="wrap clearfix">
+      <div id="J_loginDiv">
+        <link href="https://login.dangdang.com/style/login_core_mobile_code.css?20160804" rel="stylesheet" type="text/css">
+        <link href="https://login.dangdang.com/style/captcha.css?20160727" rel="stylesheet" type="text/css">
+        <div id="J_loginCoreWrap" class="infro">
+            <div style="height: 400px;width: 350px">
+                <form action="{% url 'loginapp:decide_login_is_success' %}" method="post" class="form-horizontal">
+                    {% csrf_token %}
+                      <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">电话/邮箱</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputEmail3" placeholder="Email/Phone number" placeholder=".input-lg" name="email" onblur="check_email()"><span id="phone_error"></span><img src="" alt="" id="load_1" width="15px"/>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="inputPassword3" placeholder="Password" placeholder=".input-lg" name="password" onblur="check_pwd()"><span id="pwd_error"></span><img src="" alt="" id="load_2" width="15px "/>
+                        </div>
+                      </div>
+                    <div><img id="imgVcode1" src="{% url 'loginapp:create_img_code' %}" alt="" width="300px" style="margin-left: 60px"/></div>
+                    <div><a href="javascript:void(0);"  onclick="change_img_code()">点我换一张</a></div>
+                      <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">验证码</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="img_code" placeholder="验证码" placeholder=".input-lg" name="img_code" onblur="check_img()"><span id="img_error"></span><img src="" alt="" id="load_3" width="15px "/>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <div class="checkbox">
+                            <label>
+                              <input id="check_me" type="checkbox" placeholder=".input-lg" value="1" checked="checked"> 记住我一周 &nbsp;&nbsp;&nbsp;&nbsp;<a href="">忘记密码</a>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="button" class="btn btn-default" id="submit_msg1" disabled="disabled" onclick="login_check()" value="登录"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                          <a href="{% url 'loginapp:register_view' %}?status=1"><button type="button" class="btn btn-default" >注册</button></a>
+                        </div>
+                          <div><span id="login_error"></span><img src="" alt="" id="load_4" width="15px "/></div>
+                      </div>
+                </form>
+
+            </div>
+
+
+        </div>
+
+      </div>
+    </div>
+{#    <a class="click_area" href="http://a.dangdang.com/api/data/cpx/link/38930001/1" style=""></a> </div>#}
+</div>
+
+ <style type="text/css">
+    .footer_nav_box{border-top: 1px solid #ebebeb;width:100%;_width:expression(this.scrollWidth < 960 ? "960px" : "auto");min-width: 960px;padding: 17px 0 50px;}
+    .footer_nav_box a,.footer_nav_box{color: #8c8c8c;font-size: 12px;text-decoration: none;}
+    .footer_nav_box a:hover{color: #f48570;text-decoration: underline;}
+    .footer_nav_box .footer_nav{text-align: center;line-height: 20px;padding-bottom: 17px;padding-top: 25px;}
+    .footer_nav_box .footer_nav span.sep{margin: 0 17px 0 19px;}
+    .footer_nav_box .footer_copyright{line-height: 20px;text-align: center;width: 960px;margin: 0 auto;}
+    .footer_nav_box .footer_copyright span.sep{margin:0 17px 0 19px;}
+    .footer_nav_box .footer_icon{padding: 10px 0 0 340px;width: 640px;margin: 0 auto;height: 77px;}
+    .footer_nav_box .validator,.footer_nav_box .knet{float:left;display:inline;padding:15px 5px 15px;width:135px;height:47px;}
+
+    .footer_copyright {padding: 10px 0 0 0; margin: 0 auto;float: none; width: auto;text-align: center;color: #8c8c8c;}
+    .footer_copyright span, .public_footer .footer_copyright a.footer_img { display: inline-block; float: none; }
+    .footer_copyright a { padding: 0 4px; color: #8c8c8c;font-size: 12px;text-decoration: none;}
+    .footer_copyright a:hover{color: #f48570;text-decoration: underline;}
+    .footer_nav_box .footer_nav .footer_hot_search{display:inline-block;*display:inline;width:50px;position:relative}
+    .footer_nav_box .footer_nav .pos_a_box{position:absolute;left:-251px;top:22px;background-color:#f48570;width:300px;border-radius:8px;text-align:center;height:14px;line-height:14px}
+    .footer_nav_box .footer_nav .pos_a_box a,.footer_nav_box .footer_nav .pos_a_box a:hover,.footer_nav_box .footer_nav .pos_a_box span{padding:0 2px;color:#fff;text-decoration:none}
+    .footer_nav_box .footer_nav .pos_a_box i{display:block;width:0;height:0;line-height:0;font-size:0;border-width:0 4px 4px;border-style:solid;border-color:#fff #fff #f48570 #fff;position:absolute;right:20px;top:-4px}
+</style>
+<div class="footer_nav_box">
+    <div class="footer_nav"><a href="http://static.dangdang.com/topic/2227/176801.shtml" target="_blank" rel="nofollow">公司简介</a><span class="sep">|</span><a href="http://ir.dangdang.com/" target="_blank">Investor Relations</a><span class="sep">|</span><a href="http://zhaopin.dangdang.com" target="_blank">诚聘英才</a><span class="sep">|</span><a href="http://static.dangdang.com/topic/744/200778.shtml" target="_blank">手机当当</a><span class="sep">|</span><a href="http://union.dangdang.com/" target="_blank">网站联盟</a><span class="sep">|</span><a href="http://outlets.dangdang.com/merchants_open" target="_blank">当当招商</a><span class="sep">|</span><a href="http://misc.dangdang.com/groupbuy/Default.aspx" target="_blank" rel="nofollow">机构销售</a><span class="sep">|</span><a href="http://blog.dangdang.com/" target="_blank">官方Blog</a>
+        <script>
+            var setTo = null;
+            function showghotsearch() {
+                clearTimeout(setTo);
+                document.getElementById("hot_search_content").style.display = "block";
+            }
+            function hidehotsearch() {
+                setTo = setTimeout(function() {
+                    document.getElementById("hot_search_content").style.display = "none";
+                }, 100)
+            }
+        </script>   		
+    </div>
+    <div class="footer_copyright"><span>Copyright (C) 当当网 2004-2017, All Rights Reserved</span></div>
+    <div class="footer_copyright"><span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span class="sep">|</span><span>出版物经营许可证 新出发京批字第直0673号</span><span class="sep">|</span><span>食品流通许可证：SP1101011010021855(1-1)</span><br><span>互联网药品信息服务资格证编号：(京)-非经营性-2012-0016</span><span class="sep">|</span><span>京公网安备110101000001号</span></div>
+    <!-- 有三个icon的时候加footer_icon2 -->
+    <div class="footer_icon footer_icon2" style="padding-left: 55px;">
+        <div class="validator"><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001051000098" target="_blank" class="footer_img"><img src="/static/images/validate.gif"></a></div>
+        <div class="knet"><!-- 可信网站LOGO安装开始 -->
+            <script type="text/JavaScript">
+                function CNNIC_change(eleId) {
+                var str = document.getElementById(eleId).href;
+                var str1 = str.substring(0, (str.length - 6));
+                str1 += CNNIC_RndNum(6);
+                document.getElementById(eleId).href = str1;
+                }
+
+                function CNNIC_RndNum(k) {
+                var rnd = "";
+                for (var i = 0; i < k; i++)
+                rnd += Math.floor(Math.random() * 10);
+                return rnd;
+                }
+            </script>
+            <a href="https://ss.knet.cn/verifyseal.dll?sn=2010091900100002234&amp;pa=2940051" tabindex="-1" id="urlknet" target="_blank" rel="nofollow"><img alt="可信网站" name="CNNIC_seal" src="/static/images/knetSealLogo.png" oncontextmenu="return false;" onclick="CNNIC_change('urlknet')" width="128" height="47" border="true"></a><!-- 可信网站LOGO安装结束 -->
+        </div>
+        <div class="validator"><a href="http://bj429.com.cn/" target="_blank" class="footer_img"><img src="/static/images/7d593c48-48f6-4fc9-85e0-7d6e10dfc2a2.hpvgUvc9"></a></div>
+        <div class="validator"><a id="_pingansec_bottomimagesmall_brand" href="http://si.trustutn.org/info?sn=302161014024825726885&amp;certType=1" target="_blank"><img src="/static/images/brand_128_47.png"></a></div>
+        <div class="clear"></div>
+    </div>
+</div>
+</body>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    var condition1;
+    var condition2;
+    var condition3;
+        //请求头
+    $.ajaxSetup({
+        headers:{"X-CSRFToken":'{{ csrf_token }}'},
+    });
+    {#判断邮箱#}
+        function check_email() {
+            var email_txt=document.getElementById('inputEmail3');
+            var email=email_txt.value.replace(/^\s+|\s+$/g,"").toLowerCase();//去除前后空格并转小写
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+            var reg1= new RegExp('/^1\d{10}$/');
+            if (!reg.test(email_txt.value) && email_txt.value.length!=11) {
+              $('#load_1').attr('src','/static/images/error.jpg');
+              $('#phone_error').html('格式错误,请输入邮箱或电话');
+              condition1=0;
+            } else{
+{#                去掉错#}
+                condition1=1;
+                $('#phone_error').html('');
+                $('#load_1').attr('src','/static/images/right.jpg');
+            };
+
+        }
+    {#判断输入密码#}
+    function check_pwd(){
+            var psw = $("#inputPassword3").val();
+            var reg = /^\w{6,30}$/;
+            if(!reg.test(psw)){
+                $("#pwd_error").html('6-30位字母、数字、下划线的组合');
+                $('#load_2').attr('src','/static/images/error.jpg');
+                condition2=0;
+            }else{
+              $("#pwd_error").html('');
+              $('#load_2').attr('src','/static/images/right.jpg');
+              condition2=1;
+
+            }
+        }
+            //判断验证码
+    function check_img() {
+            if($('#img_code').val().length!=4){
+                $('#img_error').html('请输入4位验证码')
+                condition3=0;
+            }else{
+                $('#img_error').html('');
+                $('#load_3').attr('src','/static/images/gif.gif');
+                $.ajax({
+                    type:'POST',
+                    url:"{% url 'loginapp:decide_img_code' %}",
+                    data:'code='+$('#img_code').val(),
+                    success:function (msg) {
+                        if (msg == '1') {
+                            {#                        更改图标#}
+                            $("#load_3").attr('src','/static/images/right.jpg');
+                            condition3=1;
+                            console.log(condition1)
+                            console.log(condition2)
+                            console.log(condition3)
+                            if (condition1+condition2+condition3==3){
+                                $('#submit_msg1').removeAttr('disabled')
+                            }
+
+                        }else {
+                            $('#img_error').html('验证码错误');
+                            $('#load_3').attr('src','/static/images/error.jpg');
+                        }
+
+                    }
+                });
+            }
+
+    }
+{#    更换验证码#}
+    function change_img_code() {
+
+        var url="{% url 'loginapp:create_img_code' %}?"+new Date().getTime();
+        $('#imgVcode1').attr('src',url)
+    }
+//确定登录ajax来判断
+    function login_check() {
+        $('#load_4').attr('src','/static/images/gif.gif');
+        $('#login_error').html('登陆中');
+        $.ajax({
+                    type:'POST',
+                    url:"{% url 'loginapp:decide_login_is_success' %}",
+                    data:'email='+$('#inputEmail3').val()+'&password='+$('#inputPassword3').val()+'&status='+{{ status }}+'&check_me='+$('#check_me').val(),
+                    success:function (msg) {
+                        if(msg=='0'){
+                            $('#load_4').attr('src','/static/images/error.jpg');
+                            $('#login_error').html('账号密码错误');
+
+                        }else {
+                                location.href='{% url "loginapp:register_login_success_jump" %}';
+                            }
+
+
+                    }
+        })
+    }
+</script>
+</html>
